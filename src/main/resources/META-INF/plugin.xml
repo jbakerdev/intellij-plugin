@@ -9,6 +9,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.jbakerdev.intellijplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.jbakerdev.intellijplugin.services.MyProjectService"/>
+        <configurationType implementation="org.jetbrains.sdk.runConfiguration.DemoRunConfigurationType"/>
     </extensions>
 
     <applicationListeners>
