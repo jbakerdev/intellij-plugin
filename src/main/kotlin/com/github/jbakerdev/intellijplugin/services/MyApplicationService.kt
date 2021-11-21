@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.jbakerdev.intellijplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.jbakerdev.intellijplugin.MyBundle
 
 class MyApplicationService {
 
