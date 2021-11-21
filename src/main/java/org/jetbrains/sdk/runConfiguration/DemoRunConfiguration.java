@@ -27,8 +27,16 @@ public class DemoRunConfiguration extends RunConfigurationBase<DemoRunConfigurat
     return (DemoRunConfigurationOptions) super.getOptions();
   }
 
+  public String getYathPath() {
+    return getOptions().getYathPath();
+  }
+
   public String getScriptName() {
     return getOptions().getScriptName();
+  }
+
+  public void setYathPath(String yathPath) {
+    getOptions().setYathPath(yathPath);
   }
 
   public void setScriptName(String scriptName) {
@@ -52,7 +60,10 @@ public class DemoRunConfiguration extends RunConfigurationBase<DemoRunConfigurat
       @NotNull
       @Override
       protected ProcessHandler startProcess() throws ExecutionException {
-        GeneralCommandLine commandLine = new GeneralCommandLine(getOptions().getScriptName());
+        GeneralCommandLine commandLine = new GeneralCommandLine();
+        commandLine.setExePath(getOptions().getYathPath());
+        commandLine.addParameters(getOptions().getScriptName());
+
         OSProcessHandler processHandler = ProcessHandlerFactory.getInstance().createColoredProcessHandler(commandLine);
         ProcessTerminatedListener.attach(processHandler);
         return processHandler;

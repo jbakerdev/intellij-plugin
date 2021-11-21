@@ -12,15 +12,18 @@ import javax.swing.*;
 public class DemoSettingsEditor extends SettingsEditor<DemoRunConfiguration> {
 
   private JPanel myPanel;
+  private LabeledComponent<TextFieldWithBrowseButton> myYathPath;
   private LabeledComponent<TextFieldWithBrowseButton> myScriptName;
 
   @Override
   protected void resetEditorFrom(DemoRunConfiguration demoRunConfiguration) {
+    myYathPath.getComponent().setText(demoRunConfiguration.getYathPath());
     myScriptName.getComponent().setText(demoRunConfiguration.getScriptName());
   }
 
   @Override
   protected void applyEditorTo(@NotNull DemoRunConfiguration demoRunConfiguration) {
+    demoRunConfiguration.setYathPath(myYathPath.getComponent().getText());
     demoRunConfiguration.setScriptName(myScriptName.getComponent().getText());
   }
 
@@ -31,6 +34,9 @@ public class DemoSettingsEditor extends SettingsEditor<DemoRunConfiguration> {
   }
 
   private void createUIComponents() {
+    myYathPath = new LabeledComponent<>();
+    myYathPath.setComponent(new TextFieldWithBrowseButton());
+
     myScriptName = new LabeledComponent<>();
     myScriptName.setComponent(new TextFieldWithBrowseButton());
   }
